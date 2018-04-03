@@ -42,7 +42,22 @@
         <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
     </bean>
 
-    <bean id="sessionManager" class="com.silence.security.session.MySessionManager"/>
+    <bean id="sessionManager" class="com.silence.security.session.MySessionManager">
+        <property name="sessionValidationInterval" value="1800000"/>
+        <property name="globalSessionTimeout" value="1800000"/>
+        <property name="sessionDAO">
+            <bean class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO"/>
+        </property>
+        <property name="sessionIdCookie" ref="simpleCookie"/>
+    </bean>
+
+    <bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="sid"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="-1"/>
+        <!--以及域名配置-->
+        <!--<property name="domain" value=""/>-->
+    </bean>
 
     <!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

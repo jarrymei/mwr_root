@@ -1,6 +1,5 @@
 package com.silence.controller;
 
-import com.silence.entity.vo.MenuVO;
 import com.silence.service.IUserService;
 import com.silence.util.JsonResult;
 import org.apache.shiro.SecurityUtils;

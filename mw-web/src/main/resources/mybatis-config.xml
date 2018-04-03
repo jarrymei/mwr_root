@@ -14,9 +14,9 @@
 		<setting name="cacheEnabled" value="true"/>
 	</settings>
 	
-<!--	<plugins>
+	<plugins>
 		<plugin interceptor="com.github.pagehelper.PageInterceptor">
 		</plugin>
-	</plugins>-->
+	</plugins>
 	
 </configuration>

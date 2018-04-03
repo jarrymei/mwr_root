@@ -24,6 +24,6 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements I
 
 	@Override
 	public User findByUserName(String username) {
-		return null;
+		return userMapper.findByUserName(username);
 	}
 }
