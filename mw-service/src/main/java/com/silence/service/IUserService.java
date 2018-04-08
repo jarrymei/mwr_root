@@ -1,7 +1,10 @@
 package com.silence.service;
 
+import com.github.pagehelper.PageInfo;
 import com.silence.entity.User;
-import com.silence.util.PageHandler;
+
+import java.util.List;
+import java.util.Map;
 
 public interface IUserService extends IBaseService<User, Integer> {
 
@@ -12,4 +15,8 @@ public interface IUserService extends IBaseService<User, Integer> {
      */
     User findByUserName(String username);
 
+
+    PageInfo<User> findByPage(Integer pageNumber, Integer pageSize);
+
+    List<Map<String, Object>> findUser();
 }

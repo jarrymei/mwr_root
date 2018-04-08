@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class User {
+public class User extends BaseModel {
     private Integer userId;
 
     private String userName;

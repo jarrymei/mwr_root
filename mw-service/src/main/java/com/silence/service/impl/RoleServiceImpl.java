@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
 public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements IRoleService {
 
 	@Autowired

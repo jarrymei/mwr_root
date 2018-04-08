@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 
 @Service
-@Transactional
 public class BaseServiceImpl<T, K extends Serializable> implements IBaseService<T, K> {
 	
 	private BaseMapper<T, K> baseDao;

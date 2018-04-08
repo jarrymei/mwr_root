@@ -111,4 +111,12 @@
   <select id="findByUserName" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"/> from tb_users where user_name=#{username,jdbcType=VARCHAR}
   </select>
+  
+  <select id="findByPage" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/> from tb_users
+  </select>
+  
+  <select id="findUser" resultType="map">
+    SELECT * from tb_users
+  </select>
 </mapper>

@@ -2,7 +2,7 @@ package com.silence.entity;
 
 import java.util.Date;
 
-public class Role {
+public class Role extends BaseModel {
     private Integer roleId;
 
     private String roleName;

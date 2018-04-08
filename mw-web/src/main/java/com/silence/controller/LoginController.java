@@ -23,10 +23,13 @@ public class LoginController {
     private IUserService userService;
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public JsonResult login(@RequestParam String username, @RequestParam String password) {
+    public JsonResult login(@RequestParam String username,
+                            @RequestParam String password,
+                            @RequestParam(required = false, defaultValue = "false") Boolean rememberMe) {
         Subject currentUser = SecurityUtils.getSubject();
         try {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            token.setRememberMe(rememberMe);
             currentUser.login(token);
             return JsonResult.buildSuccessResult("登录成功", currentUser.getSession().getId());
         } catch (UnknownAccountException e) {

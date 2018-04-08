@@ -36,6 +36,18 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath:mapper/**.xml"/>
         <property name="typeAliasesPackage" value="com.silence.entity"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                        </value>
+                    </property>
+                </bean>
+                <bean class="com.silence.mybatis.interceptor.CameHumpInterceptor"/>
+            </array>
+        </property>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -47,7 +59,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <tx:annotation-driven proxy-target-class="true"/>
     
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>

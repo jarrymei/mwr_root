@@ -43,6 +43,8 @@
     </bean>
 
     <bean id="sessionManager" class="com.silence.security.session.MySessionManager">
+        <!--去掉url后的JSESSIONID-->
+        <property name="sessionIdUrlRewritingEnabled" value="false"/>
         <property name="sessionValidationInterval" value="1800000"/>
         <property name="globalSessionTimeout" value="1800000"/>
         <property name="sessionDAO">
@@ -59,6 +61,40 @@
         <!--<property name="domain" value=""/>-->
     </bean>
 
+    <!--cookie设置-->
+   <!-- <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="rememberMe"/>
+        <property name="httpOnly" value="true"/>
+        &lt;!&ndash;  30天 &ndash;&gt;
+        <property name="maxAge" value="2592000"/>
+    </bean>
+
+    &lt;!&ndash; rememberMeManager管理器 &ndash;&gt;
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>-->
+
     <!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. -->
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--缓存管理-->
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManager" ref="ehCacheManager"/>
+    </bean>
+
+    <bean id="ehCacheManager" class ="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:shiro-ehcache.xml" />
+        <property name="shared" value="true"></property>
+    </bean>
+
+    <!-- spring 封装ehcache缓存管理器  -->
+    <bean id="cacheManager"
+          class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehCacheManager" />
+    </bean>
+
+    <!-- 激活spring 缓存注解 -->
+    <cache:annotation-driven cache-manager="cacheManager"/>
+
+
 </beans>

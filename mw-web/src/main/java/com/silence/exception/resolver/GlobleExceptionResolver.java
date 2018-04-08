@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 全局异常处理器
  * Created by silence on 2018/4/2.
  */
 public class GlobleExceptionResolver implements HandlerExceptionResolver {

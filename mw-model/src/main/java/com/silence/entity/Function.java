@@ -2,7 +2,7 @@ package com.silence.entity;
 
 import java.util.Date;
 
-public class Function {
+public class Function extends  BaseModel{
     private Integer funcId;
 
     private String funcName;
