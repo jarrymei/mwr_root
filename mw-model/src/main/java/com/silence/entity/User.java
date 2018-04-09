@@ -11,6 +11,8 @@ public class User extends BaseModel {
 
     private String password;
 
+    private String salt;
+
     @JsonFormat(pattern ="yyyy-MM-dd", timezone = "GMT+8")
     private Date createTime;
 
@@ -64,5 +66,17 @@ public class User extends BaseModel {
 
     public void setLoginIp(String loginIp) {
         this.loginIp = loginIp == null ? null : loginIp.trim();
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getCredentialsSalt() {
+        return userName + salt;
     }
 }

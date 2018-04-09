@@ -5,12 +5,13 @@
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="create_time" jdbcType="DATE" property="createTime" />
     <result column="update_time" jdbcType="DATE" property="updateTime" />
     <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, user_name, password, create_time, update_time, login_ip
+    user_id, user_name, password, create_time, update_time, login_ip, salt
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
